@@ -2385,7 +2385,6 @@ static gboolean collect_config_values(const gchar *option_name, const gchar *val
 			overwrite->overwrite_section = copy;
 			overwrite->overwrite_name = colon_delimiter;
 			overwrite->overwrite_value = equal_delimiter;
-
 			r_context_conf()->configoverwrite = g_list_append(r_context_conf()->configoverwrite, overwrite);
 			return TRUE;
 		}
@@ -2397,7 +2396,6 @@ static gboolean collect_config_values(const gchar *option_name, const gchar *val
 			overwrite->overwrite_section = copy;
 			overwrite->overwrite_name = colon_delimiter;
 			overwrite->overwrite_value = equal_delimiter;
-
 			r_context_conf()->configoverwrite = g_list_append(r_context_conf()->configoverwrite, overwrite);
 			return TRUE;
 		}
