@@ -3,6 +3,7 @@ if not get_option('tests')
 endif
 
 tests = [
+  'artifacts',
   'boot_raw_fallback',
   'bootchooser',
   'bundle',
@@ -54,6 +55,7 @@ foreach test_name : tests
   test(
     test_name,
     exe,
+    depends : rauc_binary,
     is_parallel : false,
     timeout : 240,
     protocol: 'tap',
@@ -69,6 +71,7 @@ pytest = find_program('pytest', required: false)
 
 if pytest.found()
   pytests = [
+    'test_artifacts',
     'test_bundle',
     'test_cmdline',
     'test_convert',
@@ -92,6 +95,7 @@ if pytest.found()
       pytest,
       args: ['--basetemp', '/tmp/pytest-custom-root', '-vv', test_name + '.py'],
       env: ['MESON_BUILD_DIR=' + rauc_build_root],
+      depends : rauc_binary,
       is_parallel : false,
       timeout : 120,
       workdir : meson.current_source_dir(),

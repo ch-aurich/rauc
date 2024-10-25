@@ -109,6 +109,7 @@ add_project_arguments('-D_GNU_SOURCE', language : 'c')
 incdir = include_directories('include')
 
 sources_rauc = files([
+  'src/artifacts.c',
   'src/bootchooser.c',
   'src/bundle.c',
   'src/checksum.c',
@@ -192,7 +193,7 @@ librauc = static_library('rauc',
   dependencies : rauc_deps + [versiondep],
   )
 
-executable('rauc',
+rauc_binary = executable('rauc',
   'src/main.c',
   dbus_sources,
   include_directories : incdir,
